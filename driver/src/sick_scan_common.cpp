@@ -4842,9 +4842,9 @@ namespace sick_scan
               if (shallIFire) // shall i fire the signal???
               {
 #ifdef ROSSIMU
-				std::function< void( ros_sensor_msgs::PointCloud2 & ) > *callbackFn =
-					reinterpret_cast< std::function< void( ros_sensor_msgs::PointCloud2 & ) > * >( nh );
-				(*callbackFn)( cloud_ );
+                typedef void (*PointCloudCallback)(const ros_sensor_msgs::PointCloud2 &);
+                PointCloudCallback callbackFn = reinterpret_cast<PointCloudCallback>(nh);
+                (*callbackFn)(cloud_);
 
                 // plotPointCloud(cloud_);
 #else
