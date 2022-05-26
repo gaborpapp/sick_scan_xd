@@ -4826,7 +4826,11 @@ namespace sick_scan
               if (shallIFire) // shall i fire the signal???
               {
 #ifdef ROSSIMU
-                plotPointCloud(cloud_);
+				std::function< void( ros_sensor_msgs::PointCloud2 & ) > *callbackFn =
+					reinterpret_cast< std::function< void( ros_sensor_msgs::PointCloud2 & ) > * >( nh );
+				(*callbackFn)( cloud_ );
+
+                // plotPointCloud(cloud_);
 #else
                 // ROS_DEBUG_STREAM("publishing cloud " << cloud_.height << " x " << cloud_.width << " data, cloud_output_mode=" << config_.cloud_output_mode);
                 if (config_.cloud_output_mode==0)
