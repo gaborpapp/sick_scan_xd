@@ -449,7 +449,6 @@ void ScannerBasicParam::setTrackingModeSupported(bool _trackingModeSupported)
   }
 
   /*!
-  /*!
 \brief Getter-Method for encoder mode
 \return EncoderMode:-1 Use for Scanners WO Encoder  00 disabled 01 single increment 02 direction recognition phase 03 direction recognition level
 \sa setEncoderMode
